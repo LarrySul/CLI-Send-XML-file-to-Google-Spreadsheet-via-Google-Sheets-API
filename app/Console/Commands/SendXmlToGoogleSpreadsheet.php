@@ -86,7 +86,7 @@ class SendXmlToGoogleSpreadsheet extends Command
     {
         $data = $this->preparedGoogleSheetData($response_xml_data);
         $this->googleSheetServices->writeSheetData($data);
-        $this->info('The command was successful!');
+        $this->info('The command is successful!');
         return 1;
     }
 }
