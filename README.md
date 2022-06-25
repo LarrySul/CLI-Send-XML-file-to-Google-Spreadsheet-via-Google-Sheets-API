@@ -1,64 +1,53 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This CLI program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
 
-## About Laravel
+The Google Sheets use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Specification
+● The program should reads in a local or remote xml file (configurable as a parameter): This ensures users of the application are able to read and write based on preference via the CLI. An image belows how it's done
+![Screenshot of read write operation via the CLI](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/terminal.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+● Authentication against Google API should be configurable: To use google sheet one needs to be authenticated and to this end you're required to set up a developer account via [Console Google Developer](https://console.cloud.google.com/apis/credentials). Retrieve your client credentials and download your service account credentials in a JSON format. The service account JSON credential should be copied to the storage directory, while other credentials be added to the .env file of your project.
+![Screenshot of cloud console](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/consolecloud.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+● Errors should be written to a logfile: Error handling is very much setup on this project. Errors are written everyday to the Log file and you're able to keep track of daily exceptions and error thrown in the application. Below is a screenshot of the log file
 
-## Learning Laravel
+![Screenshot of log file](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/log.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Coding Style
+● Which patterns have been used? 
+The coding pattern adopted is the creation pattern type where the business logic is hidden into services and traits.<br />
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+● How easy is it to set up the environment and run your code? 
+To set up the project you need to have PHP installed on your machine and then proceed to clone the project. Sign up to google cloud to retrieve your credentials and add to the .env file and then proceed to the terminal. If you don't have a xml you can opt for the local option that lets you send XML to Google Sheet with the data available at the **public directory > coffee_feed.xml** on this repository.
 
-## Laravel Sponsors
+### In the terminal do the followings 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### run composer install command to install all of the project dependencies </br>
 
-### Premium Partners
+#### run php artisan xml-to-google-spreadsheet to launch the command </br >
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+This is the CLI command to start the operation and it ships with an optional parameter that let's you specify a file path  </br >
 
-## Contributing
+#### run php artisan xml-to-google-spreadsheet coffee_feed.xml </br >
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+OR if file is avialable via remote location </br >
 
-## Code of Conduct
+#### run php artisan xml-to-google-spreadsheet https://raw.githubusercontent.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/master/public/coffee_feed.xml
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then you can follow the options available on the CLI to complete the process. Once the process is done you'll get a "The command is successful!" message in the terminal meaning the file has been successfully uploaded to Google sheet.
 
-## Security Vulnerabilities
+![Screenshot of terminal file](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/terminal.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![Screenshot of start sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/startsheet.png)
 
-## License
+![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/endsheet .png)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+● How is your code structured? The code is well structure to use a creational design pattern, inheritance, DRY Principle, typehint of parameter and return type to functional declarations and lot more. <br />
+● Have you applied SOLID and/or CLEAN CODE principles? Yes <br />
+● Are tests available and how have they been set up? Yes, the project has a total of 5 test cases (4 Unit and 1 Feature).
+
+![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/testcase.png)
+
+
