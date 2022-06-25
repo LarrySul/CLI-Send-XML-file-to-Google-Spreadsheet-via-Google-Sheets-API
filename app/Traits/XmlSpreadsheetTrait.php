@@ -7,6 +7,9 @@ trait XmlSpreadsheetTrait
     public function formatXmlDataItemToArray(array $items) :array
     {
         $data = [];
+        $header = ['Entity Id', 'Category Name', 'Sku', 'Name', 'Description', 'Short Desc', 'Price',
+                    'Link', 'Image', 'Brand', 'Rating', 'Caffine Type', 'Count', 'Flavored',
+                    'Seasonal', 'InStock', 'Facebook', 'IsKCup'];
         foreach ($items as $key => $item){
             $data[] = [
                 $item['entity_id'] ?? '',
@@ -29,6 +32,7 @@ trait XmlSpreadsheetTrait
                 $item['IsKCup'] ?? '',
             ];
         }
+        array_unshift($data, $header);
         return $data;
     }
 
