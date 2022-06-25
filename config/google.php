@@ -21,7 +21,7 @@ return [
     'client_secret' => env('GOOGLE_CLIENT_SECRET', ''),
     'redirect_uri' => env('GOOGLE_REDIRECT', ''),
     'scopes' => [\Google\Service\Sheets::DRIVE, \Google\Service\Sheets::SPREADSHEETS],
-    'access_type' => 'online',
+    'access_type' => 'offline',
     'approval_prompt' => 'auto',
     'prompt'           => 'consent',
     'sheet_id' => env('GOOGLE_SHEET_ID'),
@@ -57,6 +57,12 @@ return [
          * instead of a file path.
          */
         'file' => env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION', storage_path('service-account.json')),
+
+        /*
+        | Set service provider type.
+        */
+
+        'provider_type' => env('GOOGLE_SERVICE_PROVIDER_TYPE', 'Google'),
     ],
 
     /*

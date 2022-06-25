@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use App\Enums\FileLocationEnum;
 use Illuminate\Console\Command;
-use App\Jobs\SendXmlSpreadsheetJob;
 use App\Traits\XmlSpreadsheetTrait;
 use Illuminate\Support\Facades\Http;
 use App\Services\GoogleSheetServices;
+use App\Enums\ServiceProviderTypeEnum;
 
 class SendXmlToGoogleSpreadsheet extends Command
 {
@@ -32,12 +32,9 @@ class SendXmlToGoogleSpreadsheet extends Command
      * @return void
      */
 
-    protected $googleSheetServices;
-
-    public function __construct(GoogleSheetServices $googleSheetServices)
+    public function __construct()
     {
         parent::__construct();
-        $this->googleSheetServices = $googleSheetServices;
     }
 
     /**
@@ -85,7 +82,8 @@ class SendXmlToGoogleSpreadsheet extends Command
     private function buildAndDispatchXmlData(string $response_xml_data) :bool
     {
         $data = $this->preparedGoogleSheetData($response_xml_data);
-        $this->googleSheetServices->writeSheetData($data);
+        config('google.service.provider_type') == ServiceProviderTypeEnum::GOOGLE ? 
+                                                (new GoogleSheetServices())->writeSheetData($data) : NULL;
         $this->info('The command is successful!');
         return 1;
     }

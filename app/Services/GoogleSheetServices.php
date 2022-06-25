@@ -22,11 +22,11 @@ class GoogleSheetServices
     public function getClient()
     {
         $client = new Client();
-        $client->setApplicationName('Google Sheets Demo');
-        $client->setRedirectUri('https://localhost:8000/sheets');
+        $client->setApplicationName(config('google.application_name'));
+        $client->setRedirectUri(config('google.redirect_uri'));
         $client->setScopes(Sheets::SPREADSHEETS);
         $client->setAuthConfig(config('google.service.file'));
-        $client->setAccessType('offline');
+        $client->setAccessType(config('google.access_type'));
         return $client;
     }
 
