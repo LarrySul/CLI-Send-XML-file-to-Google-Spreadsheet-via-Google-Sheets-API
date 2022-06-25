@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use config;
 use Google\Client;
 use Google\Service\Sheets;
 use Google\Service\Sheets\ValueRange;
@@ -19,7 +20,7 @@ class GoogleSheetServices
     }
 
 
-    public function getClient()
+    public function getClient() :object
     {
         $client = new Client();
         $client->setApplicationName(config('google.application_name'));
@@ -30,14 +31,7 @@ class GoogleSheetServices
         return $client;
     }
 
-
-    public function readSheetData()
-    {
-        $result = $this->service->spreadsheets_values->get($this->spreadsheetId, $this->range);
-        return $result;
-    }
-
-    public function writeSheetData($xml_data)
+    public function writeSheetData($xml_data) :object
     {
         $body = new ValueRange([
             'values' => $xml_data
@@ -50,7 +44,7 @@ class GoogleSheetServices
         $result = $this->service->spreadsheets_values->update($this->spreadsheetId, $this->range,
         $body, $params);
 
-        info(json_encode($result));
+        return $result;
     }
 }
 

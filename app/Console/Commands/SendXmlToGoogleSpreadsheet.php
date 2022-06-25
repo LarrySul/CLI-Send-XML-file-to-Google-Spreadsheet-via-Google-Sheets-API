@@ -44,9 +44,7 @@ class SendXmlToGoogleSpreadsheet extends Command
      */
     public function handle()
     {
-        $path = $this->choice('Enter preferred xml data path', [FileLocationEnum::LOCAL, FileLocationEnum::REMOTE], null,
-                            $maxAttempts = null,
-                            $allowMultipleSelections = false);
+        $path = $this->choice('Enter preferred xml data path', [FileLocationEnum::LOCAL, FileLocationEnum::REMOTE], null, $maxAttempts = null, $allowMultipleSelections = false);
 
         $file_path = $this->argument('file_path');
 
@@ -66,7 +64,7 @@ class SendXmlToGoogleSpreadsheet extends Command
                     return;
                 }
                
-                $this->buildAndDispatchXmlData($response_xml_data);
+                $this->writeXmlDataToGoogleSheet($response_xml_data);
             break;
             default:
                 $file_path = $file_path ? $file_path : $this->choice(
@@ -74,12 +72,12 @@ class SendXmlToGoogleSpreadsheet extends Command
                                                         ['coffee_feed.xml']);
 
                 $response_xml_data = file_get_contents(public_path($file_path));
-                $this->buildAndDispatchXmlData($response_xml_data);
+                $this->writeXmlDataToGoogleSheet($response_xml_data);
             break;
         }
     }
 
-    private function buildAndDispatchXmlData(string $response_xml_data) :bool
+    private function writeXmlDataToGoogleSheet(string $response_xml_data) :bool
     {
         $data = $this->preparedGoogleSheetData($response_xml_data);
         config('google.service.provider_type') == ServiceProviderTypeEnum::GOOGLE ? 

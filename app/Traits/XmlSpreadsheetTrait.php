@@ -7,9 +7,7 @@ trait XmlSpreadsheetTrait
     public function formatXmlDataItemToArray(array $items) :array
     {
         $data = [];
-        $header = ['Entity Id', 'Category Name', 'Sku', 'Name', 'Description', 'Short Desc', 'Price',
-                    'Link', 'Image', 'Brand', 'Rating', 'Caffine Type', 'Count', 'Flavored',
-                    'Seasonal', 'InStock', 'Facebook', 'IsKCup'];
+        $header = $this->getSheetHeader();
                     
         foreach ($items as $key => $item){
             $data[] = [
@@ -52,6 +50,13 @@ trait XmlSpreadsheetTrait
     public function preparedGoogleSheetData(string $response_xml_data) : array
     {   $xmlData = $this->decodeXmlDataToArray($response_xml_data);
         return $this->formatXmlDataItemToArray($xmlData);
+    }
+
+    public function getSheetHeader() :array
+    {
+        return ['Entity Id', 'Category Name', 'Sku', 'Name', 'Description', 'Short Desc', 'Price',
+                    'Link', 'Image', 'Brand', 'Rating', 'Caffine Type', 'Count', 'Flavored',
+                    'Seasonal', 'InStock', 'Facebook', 'IsKCup'];
     }
 }
 
