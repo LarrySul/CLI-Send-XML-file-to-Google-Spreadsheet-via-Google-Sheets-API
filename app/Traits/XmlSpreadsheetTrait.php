@@ -10,6 +10,7 @@ trait XmlSpreadsheetTrait
         $header = ['Entity Id', 'Category Name', 'Sku', 'Name', 'Description', 'Short Desc', 'Price',
                     'Link', 'Image', 'Brand', 'Rating', 'Caffine Type', 'Count', 'Flavored',
                     'Seasonal', 'InStock', 'Facebook', 'IsKCup'];
+                    
         foreach ($items as $key => $item){
             $data[] = [
                 $item['entity_id'] ?? '',
