@@ -31,10 +31,11 @@ class SendXmlToGoogleSpreadsheet extends Command
      *
      * @return void
      */
-
-    public function __construct()
+    protected $googlesheet_service;
+    public function __construct(GoogleSheetServices $googlesheet_service)
     {
         parent::__construct();
+        $this->googlesheet_service = $googlesheet_service;
     }
 
     /**
@@ -81,7 +82,7 @@ class SendXmlToGoogleSpreadsheet extends Command
     {
         $data = $this->preparedGoogleSheetData($response_xml_data);
         config('google.service.provider_type') == ServiceProviderTypeEnum::GOOGLE ? 
-                                                (new GoogleSheetServices())->writeSheetData($data) : NULL;
+                                                $this->googlesheet_service->writeSheetData($data) : NULL;
         $this->info('The command is successful!');
         return 1;
     }

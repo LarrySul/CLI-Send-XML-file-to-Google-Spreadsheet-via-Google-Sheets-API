@@ -31,7 +31,7 @@ class GoogleSheetServices
         return $client;
     }
 
-    public function writeSheetData($xml_data) :object
+    public function writeSheetData(array $xml_data) :object
     {
         $body = new ValueRange([
             'values' => $xml_data
