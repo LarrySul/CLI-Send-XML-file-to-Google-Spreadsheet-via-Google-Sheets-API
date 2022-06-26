@@ -3,11 +3,11 @@
 
 This CLI program is built on the LARAVEL FRAMEWORK. The program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
 
-The Google Sheets use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
+The Google Sheets API use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
 
 ## Repo Overview 🥳🥳
 
-The repository contains source code for how to read XML data, format it and send to Googlesheet using the Googlesheet API.
+The repository contains source code on how to read XML data, format it and send to Googlesheet using the Googlesheet API.
 
 Specifications in the clone include
 
@@ -26,7 +26,7 @@ Specifications in the clone include
 
 ## Requirements 🔧🔧
 
-<li> <a href="https://console.developers.google.com/">Register</a> and create a google console developer account set up a project retrieve your client credentials and then create a service account.</li>
+<li> <a href="https://console.developers.google.com/">Register</a> and create a google console developer account set up a project retrieve your client credentials and then create a service account (download details in JSON).</li>
 
 <li> Download <a href="https://www.php.net/downloads.php"> PHP V7 </a> and above. </li>
 
