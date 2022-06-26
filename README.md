@@ -1,6 +1,6 @@
 ## About CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API
 
-This CLI program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
+This CLI program is built on the LARAVEL FRAMEWORK. The program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
 
 The Google Sheets use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
 
@@ -26,12 +26,12 @@ The Google Sheets use the REST APIs like [Sheets API](https://developers.google.
 
 ## Coding Style
 
-● Which patterns have been used? 
+ <h4> Which patterns have been used? </h4>
 
 The coding pattern adopted is the creation pattern type where the business logic is hidden into services and traits.<br />
 
 
-● How easy is it to set up the environment and run your code? 
+<h4> How easy is it to set up the environment and run your code? </h4>
 
 To set up the project you need to have PHP installed on your machine and then proceed to clone the project. Sign up to google cloud to retrieve your credentials and add to the .env file and then proceed to the terminal. If you don't have a xml you can opt for the local option that lets you send XML to Google Sheet with the data available at the **public directory > coffee_feed.xml** on this repository.
 
@@ -61,17 +61,17 @@ Then you can follow the options available on the CLI to complete the process. On
 ![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/endsheet.png)
 
 
-● How is your code structured? 
+<h4> How is your code structured? </h4> 
 
 The code is well structure to use a creational design pattern, inheritance, DRY Principle, typehint of parameter and return type to functional declarations and lot more. <br />
 
 
-● Have you applied SOLID and/or CLEAN CODE principles?
+<h4> Have you applied SOLID and/or CLEAN CODE principles? </h4>
 
 Yes <br />
 
 
-● Are tests available and how have they been set up? 
+<h4> Are tests available and how have they been set up? </h4>
 
 Yes, the project has a total of 5 test cases (4 Unit and 1 Feature).
 
