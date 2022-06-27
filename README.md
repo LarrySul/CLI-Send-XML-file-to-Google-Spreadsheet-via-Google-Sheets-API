@@ -1,80 +1,71 @@
-## About CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API
+## About CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API 😎😎
+
 
 This CLI program is built on the LARAVEL FRAMEWORK. The program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
 
-The Google Sheets use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
+The Google Sheets API use the REST APIs like [Sheets API](https://developers.google.com/sheets/api) and [Charts API](https://developers.google.com/chart/interactive/docs/spreadsheets/) to interact programmatically with Google Sheets.
 
+## Repo Overview 🥳🥳
 
-## Specification
+The repository contains source code on how to read XML data, format it and send to Googlesheet using the Googlesheet API.
 
-● The program should reads in a local or remote xml file (configurable as a parameter): This ensures users of the application are able to read and write based on preference via the CLI. An image belows how it's done
+Specifications in the clone include
 
+<li> The program reads in a local or remote xml file (configurable as a parameter)</li> </br>
 
 ![Screenshot of read write operation via the CLI](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/terminal.png)
 
 
-● Authentication against Google API should be configurable: To use google sheet one needs to be authenticated and to this end you're required to set up a developer account via [Console Google Developer](https://console.cloud.google.com/apis/credentials). Retrieve your client credentials and download your service account credentials in a JSON format. The service account JSON credential should be copied to the storage directory, while other credentials be added to the .env file of your project.
+<li>Configurable Authentication against Google API with Service Account and Google cloud credentials </li>
 
 
-![Screenshot of cloud console](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/consolecloud.png)
+<li> Writing of errors to logfile </li>
 
 
-● Errors should be written to a logfile: Error handling is very much setup on this project. Errors are written everyday to the Log file and you're able to keep track of daily exceptions and error thrown in the application. Below is a screenshot of the log file
+<li> Single CLI command to automate the read and write process in less than 5secs </li>
 
-![Screenshot of log file](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/log.png)
+## Requirements 🔧🔧
 
+<li> <a href="https://console.developers.google.com/">Register</a> and create a google console developer account set up a project retrieve your client credentials and then create a service account (download details in JSON).</li>
 
-## Coding Style
+<li> Download <a href="https://www.php.net/downloads.php"> PHP V7 </a> and above. </li>
 
- <h4> Which patterns have been used? </h4>
+<li> Install <a href="https://getcomposer.org/download/"> Composer </a> </li>
 
-The coding pattern adopted is the creation pattern type where the business logic is hidden into services and traits.<br />
+## Steps to run locally 🧑‍💻👩‍💻
 
+<li> Clone this repository: </li>
 
-<h4> How easy is it to set up the environment and run your code? </h4>
+<pre> git clone https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/ </pre>
 
-To set up the project you need to have PHP installed on your machine and then proceed to clone the project. Sign up to google cloud to retrieve your credentials and add to the .env file and then proceed to the terminal. If you don't have a xml you can opt for the local option that lets you send XML to Google Sheet with the data available at the **public directory > coffee_feed.xml** on this repository.
+<li> Install dependencies: </li>
 
-### In the terminal do the followings 
+<pre> composer install </pre>
 
-#### run composer install command to install all of the project dependencies </br>
+<li> Add the API key of your Google developer console and download the service account JSON to the storage directory. </li>
 
-#### run php artisan xml-to-google-spreadsheet to launch the command </br >
+<li> Open the CLI in preferred editor and run the command: </li>
 
-This is the CLI command to start the operation and it ships with an optional parameter that let's you specify a file path  </br >
+<pre> php artisan xml-to-google-spreadsheet </pre>
 
-#### run php artisan xml-to-google-spreadsheet coffee_feed.xml </br >
+The command also accepts an optional parameter with the file path either local or remotely. The clone already ships with a default file coffee_feed.xml in the public directory.
 
-OR if file is avialable via remote location </br >
+<pre> php artisan xml-to-google-spreadsheet coffee_feed.xml </pre>
 
-#### run php artisan xml-to-google-spreadsheet https://raw.githubusercontent.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/master/public/coffee_feed.xml
-
-Then you can follow the options available on the CLI to complete the process. Once the process is done you'll get a "The command is successful!" message in the terminal meaning the file has been successfully uploaded to Google sheet.
-
-
-![Screenshot of terminal file](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/terminal.png)
-
+Once the command is done you'll get a success message in the CLI 😜 </br>
 
 ![Screenshot of start sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/startsheet.png)
 
 
-![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/endsheet.png)
+## Coding Style 🚀🚀
 
+<li> Which patterns have been used: The coding pattern adopted is the creation pattern type where the business logic is hidden into services and traits.</li>
 
-<h4> How is your code structured? </h4> 
+<li> How is your code structured: The code is well structure to use a creational design pattern, inheritance, DRY Principle, typehint of parameter and return type to functional declarations and lot more. </li>
 
-The code is well structure to use a creational design pattern, inheritance, DRY Principle, typehint of parameter and return type to functional declarations and lot more. <br />
+<li> Have you applied SOLID and/or CLEAN CODE principles: Yes </li>
 
-
-<h4> Have you applied SOLID and/or CLEAN CODE principles? </h4>
-
-Yes <br />
-
-
-<h4> Are tests available and how have they been set up? </h4>
-
-Yes, the project has a total of 5 test cases (4 Unit and 1 Feature).
-
+<li> Are tests available and how have they been set up : Yes, the project has a total of 5 test cases (4 Unit and 1 Feature). </li> </br>
 
 ![Screenshot of end sheet](https://github.com/LarrySul/CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API/blob/master/public/screenshots/testcase.png)
 
