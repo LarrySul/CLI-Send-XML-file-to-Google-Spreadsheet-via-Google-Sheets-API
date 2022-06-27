@@ -84,6 +84,6 @@ class SendXmlToGoogleSpreadsheet extends Command
         config('google.service.provider_type') == ServiceProviderTypeEnum::GOOGLE ? 
                                                 $this->googlesheet_service->writeSheetData($data) : NULL;
         $this->info('The command is successful!');
-        return 1;
+        return 0;
     }
 }

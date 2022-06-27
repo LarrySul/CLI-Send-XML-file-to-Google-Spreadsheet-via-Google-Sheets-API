@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Enums\FileLocationEnum;
 use App\Traits\XmlSpreadsheetTrait;
 use Illuminate\Testing\TestResponse;
 use App\Services\GoogleSheetServices;
@@ -35,7 +36,12 @@ class XmlGoogleSheetFeatureTest extends TestCase
            array (
            ),
         );
-    
+        
+        $this->artisan('xml-to-google-spreadsheet')
+                ->expectsQuestion('Enter preferred xml data path', FileLocationEnum::LOCAL)
+                ->expectsQuestion('Enter filename in public directory', 'coffee_feed.xml')
+                ->assertSuccessful();
+                
         $this->assertArrayHasKey('updatedRows', $mock_write_sheet_result, 'Check if updated rows is available');
         $this->assertEquals(3450, $mock_write_sheet_result['updatedRows'], 'Test if updated rows in sheet is 3450');
     }
