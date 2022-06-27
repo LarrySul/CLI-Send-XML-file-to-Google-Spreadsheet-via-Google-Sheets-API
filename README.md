@@ -1,4 +1,4 @@
-## About CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API 😎😎
+## CLI-Send-XML-file-to-Google-Spreadsheet-via-Google-Sheets-API 😎😎
 
 
 This CLI program is built on the LARAVEL FRAMEWORK. The program process a local or remote XML file and push the data of the XML file to a Google Spreadsheet via the Google Sheets API [Google Spreadsheet API](https://developers.google.com/sheets/).
