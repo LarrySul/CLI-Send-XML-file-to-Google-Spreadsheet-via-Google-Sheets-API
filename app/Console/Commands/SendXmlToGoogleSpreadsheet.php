@@ -32,6 +32,7 @@ class SendXmlToGoogleSpreadsheet extends Command
      * @return void
      */
     protected $googlesheet_service;
+    
     public function __construct(GoogleSheetServices $googlesheet_service)
     {
         parent::__construct();

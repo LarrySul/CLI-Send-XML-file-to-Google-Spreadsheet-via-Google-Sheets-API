@@ -10,7 +10,7 @@ use Google\Service\Sheets\ValueRange;
 
 class GoogleSheetServices
 {
-    public $client, $service, $spreadsheetId, $range;
+    protected $client, $service, $spreadsheetId, $range;
     public function __construct()
     {
         $this->client = $this->getClient();
@@ -40,11 +40,14 @@ class GoogleSheetServices
         $params = [
             'valueInputOption' => 'RAW'
         ];
-       
-        $result = $this->service->spreadsheets_values->update($this->spreadsheetId, $this->range,
-        $body, $params);
-
-        return $result;
+        
+        try {
+            return $this->service->spreadsheets_values->update($this->spreadsheetId, 
+                $this->range, $body, $params);
+        } catch (\Exception $e) {
+                info(json_encode($e->getMessage()));
+        }
+        
     }
 }
 
